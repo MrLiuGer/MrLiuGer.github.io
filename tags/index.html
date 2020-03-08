@@ -25,6 +25,8 @@
 
     <!-- Custom CSS --> 
     <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
     
     <!-- Pygments Highlight CSS -->
     <link rel="stylesheet" href="/css/highlight.css">
@@ -97,7 +99,7 @@
     </div>
 </header>
 
-
+	
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container-fluid">
@@ -196,30 +198,38 @@
             <!-- 标签云 -->
             <div id='tag_cloud' class="tags">
                 
-                    
-                        <a href="#django" title="django" rel="1">django</a>
-                    
+                    <a href="#Python" title="Python" rel="2">Python</a>
                 
-                    
-                
-                    
-                
-                    
-                        <a href="#web安全" title="web安全" rel="1">web安全</a>
-                    
-                
-                    
+                    <a href="#Web" title="Web" rel="1">Web</a>
                 
             </div>
 
             <!-- 标签列表 -->
 
             
-              
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="django">
-                    <span class="tag-text">django</span>
+                <span class="fa fa-tag listing-seperator" id="Python">
+                    <span class="tag-text">Python</span>
                 </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/process/">
+                        <h2 class="post-title">
+                            进程
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                进程是程序执行的最小单位
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
                 
                   <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
@@ -242,15 +252,9 @@
                 
             </div>
             
-            
-              
-            
-              
-            
-              
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="web安全">
-                    <span class="tag-text">web安全</span>
+                <span class="fa fa-tag listing-seperator" id="Web">
+                    <span class="tag-text">Web</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -273,9 +277,6 @@
                 <hr>
                 
             </div>
-            
-            
-              
             
 
 
@@ -314,13 +315,7 @@
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; MrLiu 2018 
-                    <br>
-                    <!-- Theme by <a href="http://beantech.org">BeanTech</a> --> 
-                    re-Ported by <a href="https://github.com/MrLiuGer">MrLiu</a>
-					<span style="display: inline-block; margin: 0 5px;">
-                        <i class="fa fa-heart"></i>
-                    </span> 
+                    Copyright &copy; MrLiu 2020 
                 </p>
             </div>
         </div>
@@ -437,6 +432,7 @@
 	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
     <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
 <!-- Image to hack wechat -->
+<img src="https://mrliuger.github.io/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>

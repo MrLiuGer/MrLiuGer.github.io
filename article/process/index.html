@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          进程 - MrLiu | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://mrliuger.github.io/article/process/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/article_header.png')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Python" title="Python">Python</a>
+                            
+                        </div>
+                        <h1>进程</h1>
+                        <h2 class="subheading">进程是程序执行的最小单位</h2>
+                        <span class="meta">
+                            Posted by MrLiu on
+                            2018-11-15
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">MrLiu</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">我的主页</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">关于我的</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">我的档案</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">我的标签</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="基础理论">基础理论</h1>
+<h2 id="什么是进程">什么是进程</h2>
+<pre><code>进程：正在进行的一个过程或者说一个任务。而负责执行任务则是cpu。  
+举例（单核+多道，实现多个进程的并发执行）
+</code></pre>
+<h2 id="进程与程序的区别">进程与程序的区别</h2>
+<pre><code>程序仅仅只是一堆代码而已，而进程指的是程序的运行过程。  
+同一个程序执行两次，那也是两个进程  
+</code></pre>
+<h2 id="并发与并行">并发与并行</h2>
+<p><img src="1036857-20170506233723679-411353203.png" alt="并发与并行"></p>
+<h2 id="同步-异步and阻塞-非阻塞">同步 异步and阻塞 非阻塞</h2>
+<h3 id="同步">同步</h3>
+<pre><code>所谓同步，就是在发出一个功能调用时，在没有得到结果之前，该调用就不会返回。按照这个定义，其实绝大多数函数都是同步调用。但是一般而言，我们在说同步、异步的时候，特指那些需要其他部件协作或者需要一定时间完成的任务。  
+</code></pre>
+<h3 id="异步">异步</h3>
+<pre><code>异步的概念和同步相对。当一个异步功能调用发出后，调用者不能立刻得到结果。当该异步功能完成后，通过状态、通知或回调来通知调用者。如果异步功能用状态来通知，那么调用者就需要每隔一定时间检查一次，效率就很低（有些初学多线程编程的人，总喜欢用一个循环去检查某个变量的值，这其实是一 种很严重的错误）。如果是使用通知的方式，效率则很高，因为异步功能几乎不需要做额外的操作。至于回调函数，其实和通知没太多区别。  
+</code></pre>
+<h3 id="阻塞">阻塞</h3>
+<pre><code>阻塞调用是指调用结果返回之前，当前线程会被挂起（如遇到io操作）。函数只有在得到结果之后才会将阻塞的线程激活。有人也许会把阻塞调用和同步调用等同起来，实际上他是不同的。对于同步调用来说，很多时候当前线程还是激活的，只是从逻辑上当前函数没有返回而已。  
+</code></pre>
+<h3 id="非阻塞">非阻塞</h3>
+<pre><code>非阻塞和阻塞的概念相对应，指在不能立刻得到结果之前也会立刻返回，同时该函数不会阻塞当前线程。  
+</code></pre>
+<h3 id="小结">小结</h3>
+<pre><code>1. 同步与异步针对的是函数/任务的调用方式：同步就是当一个进程发起一个函数（任务）调用的时候，一直等到函数（任务）完成，而进程继续处于激活状态。而异步情况下是当一个进程发起一个函数（任务）调用的时候，不会等函数返回，而是继续往下执行当，函数返回的时候通过状态、通知、事件等方式通知进程任务完成。  
+2. 阻塞与非阻塞针对的是进程或线程：阻塞是当请求不能满足的时候就将进程挂起，而非阻塞则不会阻塞当前进程
+</code></pre>
+<h1 id="基础进阶">基础进阶</h1>
+<h2 id="multiprocessing模块介绍">multiprocessing模块介绍</h2>
+<pre><code>python中的多线程无法利用多核优势，如果想要充分地使用多核CPU的资源（os.cpu_count()查看），在python中大部分情况需要使用多进程。Python提供了multiprocessing。  
+multiprocessing模块用来开启子进程，并在子进程中执行我们定制的任务（比如函数），该模块与多线程模块threading的编程接口类似。  
+multiprocessing模块的功能众多：支持子进程、通信和共享数据、执行不同形式的同步，提供了Process、Queue、Pipe、Lock等组件。  
+需要再次强调的一点是：与线程不同，进程没有任何共享状态，进程修改的数据，改动仅限于该进程内。
+</code></pre>
+<h2 id="process类的介绍">Process类的介绍</h2>
+<h3 id="创建进程的类">创建进程的类</h3>
+<pre><code>Process([group [, target [, name [, args [, kwargs]]]]])
+强调：
+1. 需要使用关键字的方式来指定参数
+2. args指定的为传给target函数的位置参数，是一个元组形式，必须有逗号
+</code></pre>
+<h3 id="参数介绍">参数介绍</h3>
+<pre><code>1. group参数未使用，值始终为None  
+2. target表示调用对象，即子进程要执行的任务  
+3. args表示调用对象的位置参数元组，args=(1,2,'egon',)  
+4. kwargs表示调用对象的字典,kwargs={'name':'egon','age':18}   
+5. name为子进程的名称  
+</code></pre>
+<h3 id="方法介绍">方法介绍：</h3>
+<pre><code>1. p.start()：启动进程，并调用该子进程中的p.run()
+2. p.run():
+3. p.terminate():强制终止进程p，不会进行任何清理操作，如果p创建了子进程，该子进程就成了僵尸进程，使用该方法需要特别小心这种情况。如果p还保存了一个锁那么也将不会被释放，进而导致死锁
+4. p.is_alive():
+5. p.join([timeout]):主线程等待p终止（强调：是主线程处于等的状态，而p是处于运行的状态）。timeout是可选的超时时间，需要强调的是，p.join只能join住start开启的进程，而不能join住run开启的进程  
+</code></pre>
+<h3 id="属性介绍">属性介绍：</h3>
+<pre><code>1. p.daemon：默认值为False，如果设为True，代表p为后台运行的守护进程，当p的父进程终止时，p也随之终止，并且设定为True后，p不能创建自己的新进程，必须在p.start()之前设置
+2. p.name:进程的名称
+3. p.pid：进程的pid
+4. p.exitcode:进程在运行时为None、如果为–N，表示被信号N结束(了解即可)
+5. p.authkey:进程的身份验证键,默认是由os.urandom()随机生成的32字符的字符串。这个键的用途是为涉及网络连接的底层进程间通信提供安全性，这类连接只有在具有相同的身份验证键时才能成功（了解即可）
+</code></pre>
+<h2 id="process类的使用">Process类的使用</h2>
+<pre><code>注意：在windows中Process()必须放到# if __name__ == '__main__':下
+Since Windows has no fork, the multiprocessing module starts a new Python process and imports the calling module.  
+If Process() gets called upon import, then this sets off an infinite succession of new processes (or until your machine runs out of resources).  
+This is the reason for hiding calls to Process() inside  
+if __name__ == &quot;__main__&quot;  
+since statements inside this if-statement will not get called upon import.  
+由于Windows没有fork，多处理模块启动一个新的Python进程并导入调用模块。  
+如果在导入时调用Process（），那么这将启动无限继承的新进程（或直到机器耗尽资源）。  
+这是隐藏对Process（）内部调用的原，使用if __name__ == '__main__',这个if语句中的语句将不会在导入时被调用。  
+</code></pre>
+<h3 id="创建并开启子进程的两种方式">创建并开启子进程的两种方式</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#开进程的方法一:</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">piao</span><span class="params">(name)</span>:</span></span><br><span class="line">    print(<span class="string">'%s piaoing'</span> %name)</span><br><span class="line">    time.sleep(random.randrange(<span class="number">1</span>,<span class="number">5</span>))</span><br><span class="line">    print(<span class="string">'%s piao end'</span> %name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p1=Process(target=piao,args=(<span class="string">'egon'</span>,)) <span class="comment">#必须加,号</span></span><br><span class="line">p2=Process(target=piao,args=(<span class="string">'alex'</span>,))</span><br><span class="line">p3=Process(target=piao,args=(<span class="string">'wupeqi'</span>,))</span><br><span class="line">p4=Process(target=piao,args=(<span class="string">'yuanhao'</span>,))</span><br><span class="line"></span><br><span class="line">p1.start()</span><br><span class="line">p2.start()</span><br><span class="line">p3.start()</span><br><span class="line">p4.start()</span><br><span class="line">print(<span class="string">'主线程'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#开进程的方法二:</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Piao</span><span class="params">(Process)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line">        self.name=name</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'%s piaoing'</span> %self.name)</span><br><span class="line"></span><br><span class="line">        time.sleep(random.randrange(<span class="number">1</span>,<span class="number">5</span>))</span><br><span class="line">        print(<span class="string">'%s piao end'</span> %self.name)</span><br><span class="line"></span><br><span class="line">p1=Piao(<span class="string">'egon'</span>)</span><br><span class="line">p2=Piao(<span class="string">'alex'</span>)</span><br><span class="line">p3=Piao(<span class="string">'wupeiqi'</span>)</span><br><span class="line">p4=Piao(<span class="string">'yuanhao'</span>)</span><br><span class="line"></span><br><span class="line">p1.start() <span class="comment">#start会自动调用run</span></span><br><span class="line">p2.start()</span><br><span class="line">p3.start()</span><br><span class="line">p4.start()</span><br><span class="line">print(<span class="string">'主线程'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="进程直接的内存空间是隔离的">进程直接的内存空间是隔离的</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line">n=<span class="number">100</span> <span class="comment">#在windows系统中应该把全局变量定义在if __name__ == '__main__'之上就可以了</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> n</span><br><span class="line">    n=<span class="number">0</span></span><br><span class="line">    print(<span class="string">'子进程内: '</span>,n)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    p=Process(target=work)</span><br><span class="line">    p.start()</span><br><span class="line">    print(<span class="string">'主进程内: '</span>,n)</span><br></pre></td></tr></table></figure>
+<h3 id=""></h3>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/article/websecurity/" data-toggle="tooltip" data-placement="top" title="web安全">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    <style>
+      span.toc-nav-number{
+        display: none
+      }
+    </style>
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#基础理论"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x57FA;&#x7840;&#x7406;&#x8BBA;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#什么是进程"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">&#x4EC0;&#x4E48;&#x662F;&#x8FDB;&#x7A0B;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#进程与程序的区别"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">&#x8FDB;&#x7A0B;&#x4E0E;&#x7A0B;&#x5E8F;&#x7684;&#x533A;&#x522B;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#并发与并行"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">&#x5E76;&#x53D1;&#x4E0E;&#x5E76;&#x884C;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#同步-异步and阻塞-非阻塞"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">&#x540C;&#x6B65; &#x5F02;&#x6B65;and&#x963B;&#x585E; &#x975E;&#x963B;&#x585E;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#同步"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">&#x540C;&#x6B65;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#异步"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">&#x5F02;&#x6B65;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#阻塞"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">&#x963B;&#x585E;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#非阻塞"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">&#x975E;&#x963B;&#x585E;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#小结"><span class="toc-nav-number">1.4.5.</span> <span class="toc-nav-text">&#x5C0F;&#x7ED3;</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#基础进阶"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x57FA;&#x7840;&#x8FDB;&#x9636;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#multiprocessing模块介绍"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">multiprocessing&#x6A21;&#x5757;&#x4ECB;&#x7ECD;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#process类的介绍"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Process&#x7C7B;&#x7684;&#x4ECB;&#x7ECD;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#创建进程的类"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">&#x521B;&#x5EFA;&#x8FDB;&#x7A0B;&#x7684;&#x7C7B;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#参数介绍"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">&#x53C2;&#x6570;&#x4ECB;&#x7ECD;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#方法介绍"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text">&#x65B9;&#x6CD5;&#x4ECB;&#x7ECD;&#xFF1A;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#属性介绍"><span class="toc-nav-number">2.2.4.</span> <span class="toc-nav-text">&#x5C5E;&#x6027;&#x4ECB;&#x7ECD;&#xFF1A;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#process类的使用"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Process&#x7C7B;&#x7684;&#x4F7F;&#x7528;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#创建并开启子进程的两种方式"><span class="toc-nav-number">2.3.1.</span> <span class="toc-nav-text">&#x521B;&#x5EFA;&#x5E76;&#x5F00;&#x542F;&#x5B50;&#x8FDB;&#x7A0B;&#x7684;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#进程直接的内存空间是隔离的"><span class="toc-nav-number">2.3.2.</span> <span class="toc-nav-text">&#x8FDB;&#x7A0B;&#x76F4;&#x63A5;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x662F;&#x9694;&#x79BB;&#x7684;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.3.3.</span> <span class="toc-nav-text"></span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Python" title="Python">Python</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/MrLiuGer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; MrLiu 2020 
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://mrliuger.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'r45fhy7653897235wg5ye709d930f62e';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://mrliuger.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

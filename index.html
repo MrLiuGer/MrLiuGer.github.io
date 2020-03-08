@@ -25,6 +25,8 @@
 
     <!-- Custom CSS --> 
     <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
     
     <!-- Pygments Highlight CSS -->
     <link rel="stylesheet" href="/css/highlight.css">
@@ -97,7 +99,7 @@
     </div>
 </header>
 
-
+	
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container-fluid">
@@ -209,8 +211,51 @@
 
 <div class="post-preview">
 
+    <a href="/article/process/">
+        <h2 class="post-title">
+                                 
+            进程
+        </h2>
+        <h3 class="post-subtitle">
+            进程是程序执行的最小单位
+        </h3>
+        <div class="post-content-preview">
+            基础理论
+什么是进程
+进程：正在进行的一个过程或者说一个任务。而负责执行任务则是cpu。  
+举例（单核+多道，实现多个进程的并发执行）
+
+进程与程序的区别
+程序仅仅只是一堆代码而已，而进程指的是程序的运行过程。  
+同一个程序执行两次，那也是两个进程  
+
+并发与并行
+
+同步 异步and阻塞 非阻塞
+同步
+所谓同步，就是在发出一个功能调用时，在没有得到结果之前，该调用就不会返回。按照这个定......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by MrLiu on
+            2018-11-15
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Python" title="Python">Python</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/websecurity/">
         <h2 class="post-title">
+                                 
             web安全
         </h2>
         <h3 class="post-subtitle">
@@ -230,7 +275,7 @@
         </p>
         <div class="tags">
             
-              <a href="/tags/#web安全" title="web安全">web安全</a>
+              <a href="/tags/#Web" title="Web">Web</a>
             
         </div>
     
@@ -242,6 +287,7 @@
 
     <a href="/article/django/">
         <h2 class="post-title">
+                                 
             django知识相关
         </h2>
         <h3 class="post-subtitle">
@@ -267,7 +313,7 @@ View（视图）：负责业务逻辑，并在适当的时候调用Model和Templ
         </p>
         <div class="tags">
             
-              <a href="/tags/#django" title="django">django</a>
+              <a href="/tags/#Python" title="Python">Python</a>
             
         </div>
     
@@ -308,21 +354,15 @@ View（视图）：负责业务逻辑，并在适当的时候调用Model和Templ
 
 <section>
     <!-- no hr -->
-    <h5><a href="/tags/">我的标签</a></h5>
+    <h5><a href="/tags/">FEATURED TAGS</a></h5>
     <div class="tags">
         
             
-            <a href="/tags/#django" title="django" rel="1">django</a>
+            <a href="/tags/#Python" title="Python" rel="2">Python</a>
             
         
             
-        
-            
-        
-            
-            <a href="/tags/#web安全" title="web安全" rel="1">web安全</a>
-            
-        
+            <a href="/tags/#Web" title="Web" rel="1">Web</a>
             
         
     </div>
@@ -332,7 +372,7 @@ View（视图）：负责业务逻辑，并在适当的时候调用Model和Templ
     
         <!-- Short About -->
 <section class="visible-md visible-lg">
-    <h5><a href="/about/">关于我的</a></h5>
+    <h5><a href="/about/">ABOUT ME</a></h5>
     <div class="short-about">
 
         
@@ -373,9 +413,13 @@ View（视图）：负责业务逻辑，并在适当的时候调用Model和Templ
         <hr>
     
         
-  <h5>最近文章</h3>
+  <h5>RECENT POSTS</h3>
   <div class="widget">
     <ul>
+      
+        <li>
+          <a href="/article/process/">进程</a>
+        </li>
       
         <li>
           <a href="/article/websecurity/">web安全</a>
@@ -395,9 +439,9 @@ View（视图）：负责业务逻辑，并在适当的时候调用Model和Templ
         <hr>
     
         
-    <h5>个人档案</h5>
+    <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
 
         <hr>
@@ -439,13 +483,7 @@ View（视图）：负责业务逻辑，并在适当的时候调用Model和Templ
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; MrLiu 2018 
-                    <br>
-                    <!-- Theme by <a href="http://beantech.org">BeanTech</a> --> 
-                    re-Ported by <a href="https://github.com/MrLiuGer">MrLiu</a>
-					<span style="display: inline-block; margin: 0 5px;">
-                        <i class="fa fa-heart"></i>
-                    </span> 
+                    Copyright &copy; MrLiu 2020 
                 </p>
             </div>
         </div>
@@ -562,6 +600,7 @@ View（视图）：负责业务逻辑，并在适当的时候调用Model和Templ
 	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
     <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
 <!-- Image to hack wechat -->
+<img src="https://mrliuger.github.io/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>

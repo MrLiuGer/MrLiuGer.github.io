@@ -25,6 +25,8 @@
 
     <!-- Custom CSS --> 
     <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
     
     <!-- Pygments Highlight CSS -->
     <link rel="stylesheet" href="/css/highlight.css">
@@ -86,7 +88,7 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#django" title="django">django</a>
+                              <a class="tag" href="/tags/#Python" title="Python">Python</a>
                             
                         </div>
                         <h1>django知识相关</h1>
@@ -105,7 +107,7 @@
     </div>
 </header>
 
-
+	
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container-fluid">
@@ -425,6 +427,16 @@
                 </ul>
 
                 <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                <!--分享-->
+                <br>                       
                 
                 <!-- require APlayer -->
                 
@@ -477,10 +489,10 @@
                 
                 <section>
                     <!-- no hr -->
-                    <h5><a href="/tags/">标签列表</a></h5>
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#django" title="django">django</a>
+                          <a class="tag" href="/tags/#Python" title="Python">Python</a>
                         
                     </div>
                 </section>
@@ -535,6 +547,24 @@
 </style>
 
 
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
 
     <!-- Footer -->
     <!-- Footer -->
@@ -566,13 +596,7 @@
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; MrLiu 2018 
-                    <br>
-                    <!-- Theme by <a href="http://beantech.org">BeanTech</a> --> 
-                    re-Ported by <a href="https://github.com/MrLiuGer">MrLiu</a>
-					<span style="display: inline-block; margin: 0 5px;">
-                        <i class="fa fa-heart"></i>
-                    </span> 
+                    Copyright &copy; MrLiu 2020 
                 </p>
             </div>
         </div>
@@ -689,6 +713,7 @@
 	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
     <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
 <!-- Image to hack wechat -->
+<img src="https://mrliuger.github.io/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
